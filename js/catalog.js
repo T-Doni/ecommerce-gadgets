@@ -15,8 +15,24 @@
       ? `<span class="product-badge">${product.badge}</span>`
       : '';
 
+    const productHref = 'product.html?id=' + encodeURIComponent(product.id);
+
+    const colors = Array.isArray(product.colors) ? product.colors : [];
+    const swatchMarkup = colors.length > 1
+      ? `<div class="product-colors" aria-label="Available colors">
+           ${colors
+             .slice(0, 5)
+             .map(
+               (c) =>
+                 `<span class="swatch swatch--xs" style="--swatch-color: ${c.hex}" title="${c.name}"></span>`
+             )
+             .join('')}
+           ${colors.length > 5 ? `<span class="product-colors-more">+${colors.length - 5}</span>` : ''}
+         </div>`
+      : '';
+
     card.innerHTML = `
-      <div class="product-media">
+      <a class="product-media" href="${productHref}" aria-label="${product.name}">
         ${badgeMarkup}
         <img
           class="product-image"
@@ -24,10 +40,11 @@
           alt="${product.name}"
           loading="lazy"
         />
-      </div>
+      </a>
       <div class="product-body">
-        <h3 class="product-name">${product.name}</h3>
+        <h3 class="product-name"><a href="${productHref}">${product.name}</a></h3>
         <p class="product-desc">${product.description}</p>
+        ${swatchMarkup}
         <div class="product-foot">
           <span class="product-price">${formatPrice(product.price)}</span>
           <div class="qty-control" data-qty="1" aria-label="Quantity">
@@ -36,9 +53,12 @@
             <button type="button" class="qty-btn" data-action="inc" aria-label="Increase quantity">+</button>
           </div>
         </div>
-        <button type="button" class="button button-primary button-block add-btn">
-          Add to cart
-        </button>
+        <div class="product-actions">
+          <a class="button button-ghost button-block" href="${productHref}">View details</a>
+          <button type="button" class="button button-primary button-block add-btn">
+            Add to cart
+          </button>
+        </div>
       </div>
     `;
 
@@ -61,7 +81,8 @@
     incBtn.addEventListener('click', () => setQty(getQty() + 1));
     addBtn.addEventListener('click', () => {
       const qty = getQty();
-      CartStore.add(product.id, qty);
+      const defaultColor = colors.length > 0 ? colors[0] : null;
+      CartStore.add(product.id, qty, defaultColor ? defaultColor.id : '');
       addBtn.textContent = 'Added ✓';
       addBtn.disabled = true;
       window.showToast &&

@@ -18,16 +18,30 @@
   }
 
   function renderRow(line) {
-    const { product, qty, lineTotal } = line;
+    const { product, color, qty, lineTotal } = line;
+    const colorId = color ? color.id : '';
+    const image = (color && color.image) || product.image;
+    const productHref = 'product.html?id=' + encodeURIComponent(product.id) +
+      (colorId ? '&color=' + encodeURIComponent(colorId) : '');
+    const colorLabel = color ? color.name : '';
+    const colorRow = color
+      ? `<div class="cart-row-color">
+           <span class="swatch swatch--inline" style="--swatch-color: ${color.hex}" aria-hidden="true"></span>
+           <span>${colorLabel}</span>
+         </div>`
+      : '';
+
     const row = document.createElement('article');
     row.className = 'cart-row';
     row.dataset.id = product.id;
+    row.dataset.color = colorId;
     row.innerHTML = `
-      <a class="cart-row-media" href="index.html#catalogue" tabindex="-1">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+      <a class="cart-row-media" href="${productHref}" tabindex="-1">
+        <img src="${image}" alt="${product.name}" loading="lazy" />
       </a>
       <div class="cart-row-info">
-        <h3 class="cart-row-name">${product.name}</h3>
+        <h3 class="cart-row-name"><a href="${productHref}">${product.name}</a></h3>
+        ${colorRow}
         <p class="cart-row-desc">${product.description}</p>
         <button type="button" class="link-btn" data-action="remove">Remove</button>
       </div>
@@ -43,14 +57,17 @@
     `;
 
     row.querySelector('[data-action="dec"]').addEventListener('click', () => {
-      CartStore.setQty(product.id, qty - 1);
+      CartStore.setQty(product.id, qty - 1, colorId);
     });
     row.querySelector('[data-action="inc"]').addEventListener('click', () => {
-      CartStore.setQty(product.id, qty + 1);
+      CartStore.setQty(product.id, qty + 1, colorId);
     });
     row.querySelector('[data-action="remove"]').addEventListener('click', () => {
-      CartStore.remove(product.id);
-      window.showToast && window.showToast(`Removed ${product.name}`);
+      CartStore.remove(product.id, colorId);
+      const label = colorLabel
+        ? `${product.name} (${colorLabel})`
+        : product.name;
+      window.showToast && window.showToast(`Removed ${label}`);
     });
 
     return row;
