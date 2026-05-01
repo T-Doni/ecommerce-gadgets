@@ -451,14 +451,32 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem 0.6rem;
   margin-top: auto;
+  flex-wrap: wrap;
 }
 
 .product-price {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.product-foot .qty-control {
+  padding: 0.15rem;
+  gap: 0.1rem;
+}
+
+.product-foot .qty-btn {
+  width: 26px;
+  height: 26px;
+  font-size: 0.95rem;
+}
+
+.product-foot .qty-value {
+  min-width: 18px;
+  font-size: 0.9rem;
 }
 
 /* ===== Quantity control ===== */
