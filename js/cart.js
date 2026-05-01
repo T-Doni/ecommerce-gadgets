@@ -8,7 +8,6 @@
   const summaryShipping = document.getElementById('summary-shipping');
   const summaryTotal = document.getElementById('summary-total');
   const shippingNote = document.getElementById('shipping-note');
-  const checkoutBtn = document.getElementById('checkout-btn');
   const clearBtn = document.getElementById('clear-btn');
 
   if (!layout || !list) return;
@@ -117,18 +116,6 @@
         CartStore.clear();
         window.showToast && window.showToast('Cart cleared');
       }
-    });
-  }
-
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', () => {
-      const t = CartStore.totals();
-      if (t.lines.length === 0) return;
-      window.showToast &&
-        window.showToast(
-          `Order placed: ${t.count} item${t.count === 1 ? '' : 's'} for ${fmt(t.total)}.`
-        );
-      CartStore.clear();
     });
   }
 

@@ -67,11 +67,27 @@
           <div class="section-head">
             <h2 class="section-title">Catalogue</h2>
             <p class="section-sub">
-              Eight essentials, in stock and ready to ship today.
+              Hand-picked gadgets across phones, laptops, cameras and more.
             </p>
           </div>
-          <div class="product-grid" id="product-grid">
-            <!-- Filled by catalog.js -->
+          <div class="catalog-layout">
+            <aside class="catalog-sidebar" aria-label="Filter by category">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="category-list" id="category-list" role="list">
+                <!-- Filled by catalog.js -->
+              </ul>
+            </aside>
+            <div class="catalog-main">
+              <div class="catalog-toolbar">
+                <span class="catalog-result-count" id="catalog-result-count" aria-live="polite"></span>
+              </div>
+              <div class="product-grid" id="product-grid">
+                <!-- Filled by catalog.js -->
+              </div>
+              <p class="catalog-empty" id="catalog-empty" hidden>
+                No products in this category yet.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -2,8 +2,66 @@
   const grid = document.getElementById('product-grid');
   if (!grid) return;
 
+  const categoryList = document.getElementById('category-list');
+  const resultCount = document.getElementById('catalog-result-count');
+  const emptyMsg = document.getElementById('catalog-empty');
+
+  const url = new URL(window.location.href);
+  let activeCategory = url.searchParams.get('category') || 'all';
+  if (!CATEGORIES.some((c) => c.id === activeCategory)) {
+    activeCategory = 'all';
+  }
+
   function formatPrice(value) {
     return '$' + value.toFixed(2);
+  }
+
+  function categoryCount(catId) {
+    if (catId === 'all') return PRODUCTS.length;
+    return PRODUCTS.filter((p) => p.category === catId).length;
+  }
+
+  function categoryLabel(catId) {
+    const c = CATEGORIES.find((cat) => cat.id === catId);
+    return c ? c.name : 'Products';
+  }
+
+  function renderCategoryList() {
+    if (!categoryList) return;
+    categoryList.innerHTML = CATEGORIES.map((cat) => {
+      const count = categoryCount(cat.id);
+      const isActive = cat.id === activeCategory;
+      return `
+        <li class="category-item">
+          <button
+            type="button"
+            class="category-link${isActive ? ' is-active' : ''}"
+            data-category="${cat.id}"
+            aria-pressed="${isActive ? 'true' : 'false'}"
+          >
+            <span class="category-name">${cat.name}</span>
+            <span class="category-count">${count}</span>
+          </button>
+        </li>
+      `;
+    }).join('');
+
+    categoryList.querySelectorAll('.category-link').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const catId = btn.dataset.category;
+        if (catId === activeCategory) return;
+        activeCategory = catId;
+        const nextUrl = new URL(window.location.href);
+        if (catId === 'all') {
+          nextUrl.searchParams.delete('category');
+        } else {
+          nextUrl.searchParams.set('category', catId);
+        }
+        window.history.replaceState({}, '', nextUrl);
+        renderCategoryList();
+        renderGrid();
+      });
+    });
   }
 
   function renderCard(product) {
@@ -101,7 +159,34 @@
     return card;
   }
 
-  const fragment = document.createDocumentFragment();
-  PRODUCTS.forEach((product) => fragment.appendChild(renderCard(product)));
-  grid.appendChild(fragment);
+  function renderGrid() {
+    const items =
+      activeCategory === 'all'
+        ? PRODUCTS
+        : PRODUCTS.filter((p) => p.category === activeCategory);
+
+    grid.innerHTML = '';
+    if (items.length === 0) {
+      grid.hidden = true;
+      if (emptyMsg) emptyMsg.hidden = false;
+    } else {
+      grid.hidden = false;
+      if (emptyMsg) emptyMsg.hidden = true;
+      const fragment = document.createDocumentFragment();
+      items.forEach((product) => fragment.appendChild(renderCard(product)));
+      grid.appendChild(fragment);
+    }
+
+    if (resultCount) {
+      const label = categoryLabel(activeCategory);
+      const noun = items.length === 1 ? 'product' : 'products';
+      resultCount.textContent =
+        activeCategory === 'all'
+          ? `${items.length} ${noun}`
+          : `${items.length} ${noun} in ${label}`;
+    }
+  }
+
+  renderCategoryList();
+  renderGrid();
 })();

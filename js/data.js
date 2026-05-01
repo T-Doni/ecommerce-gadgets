@@ -1,7 +1,21 @@
+const CATEGORIES = [
+  { id: 'all', name: 'All products' },
+  { id: 'phones', name: 'Phones' },
+  { id: 'laptops', name: 'Laptops' },
+  { id: 'tablets', name: 'Tablets' },
+  { id: 'watches', name: 'Watches' },
+  { id: 'headphones', name: 'Headphones' },
+  { id: 'earbuds', name: 'Earbuds' },
+  { id: 'cameras', name: 'Cameras' },
+  { id: 'speakers', name: 'Speakers' },
+  { id: 'mice', name: 'Mice' },
+];
+
 const PRODUCTS = [
   {
     id: 'iphone-16-pro',
     name: 'iPhone 16 Pro 256 GB',
+    category: 'phones',
     price: 1099.0,
     description:
       'Pro-grade titanium flagship with the A18 Pro chip, the new Camera Control button, and a brighter, more efficient ProMotion display.',
@@ -48,8 +62,67 @@ const PRODUCTS = [
     ],
   },
   {
+    id: 'samsung-galaxy-s24-ultra',
+    name: 'Samsung Galaxy S24 Ultra 256 GB',
+    category: 'phones',
+    price: 1199.0,
+    description:
+      'Titanium-framed Galaxy AI flagship with a built-in S Pen, 200 MP main camera with 5x optical zoom, and the brightest 6.8" QHD+ Dynamic AMOLED 2X display Samsung has ever shipped.',
+    image: 'assets/images/products/samsung-galaxy-s24-ultra/titanium-silver.jpg',
+    badge: 'New',
+    colors: [
+      {
+        id: 'titanium-silver',
+        name: 'Titanium Silver',
+        hex: '#c9c8c4',
+        image: 'assets/images/products/samsung-galaxy-s24-ultra/titanium-silver.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Display', value: '6.8" QHD+ Dynamic AMOLED 2X, 1–120 Hz, 2600 nits peak' },
+      { label: 'Chip', value: 'Snapdragon 8 Gen 3 for Galaxy (4 nm)' },
+      { label: 'Memory', value: '12 GB RAM' },
+      { label: 'Storage', value: '256 GB' },
+      { label: 'Camera', value: '200 MP main + 50 MP 5× tele + 10 MP 3× tele + 12 MP UW' },
+      { label: 'Front camera', value: '12 MP, ƒ/2.2' },
+      { label: 'Battery', value: '5000 mAh, 45 W wired, 15 W wireless' },
+      { label: 'S Pen', value: 'Built-in S Pen with Bluetooth' },
+      { label: 'Build', value: 'Titanium frame, Gorilla Armor front glass, IP68' },
+    ],
+  },
+  {
+    id: 'google-pixel-9-pro',
+    name: 'Google Pixel 9 Pro 256 GB',
+    category: 'phones',
+    price: 999.0,
+    description:
+      'Made by Google, powered by Tensor G4 with Gemini AI built in. 6.3" Super Actua LTPO display, triple 50/48/48 MP camera system, and seven years of OS, security and Pixel Drops.',
+    image: 'assets/images/products/google-pixel-9-pro/obsidian.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'obsidian',
+        name: 'Obsidian',
+        hex: '#1a1a1d',
+        image: 'assets/images/products/google-pixel-9-pro/obsidian.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Display', value: '6.3" Super Actua LTPO OLED, 1–120 Hz, 3000 nits peak' },
+      { label: 'Chip', value: 'Google Tensor G4 + Titan M2 security' },
+      { label: 'Memory', value: '16 GB RAM' },
+      { label: 'Storage', value: '256 GB' },
+      { label: 'Camera', value: '50 MP main + 48 MP UW + 48 MP 5× tele' },
+      { label: 'Front camera', value: '42 MP, autofocus, ƒ/2.2' },
+      { label: 'Battery', value: '4700 mAh, 27 W wired, 21 W Qi wireless' },
+      { label: 'Software', value: '7 years of OS, security and Pixel Drops' },
+      { label: 'Build', value: 'Polished aluminium frame, Gorilla Glass Victus 2, IP68' },
+    ],
+  },
+  {
     id: 'macbook-pro-m4',
     name: 'MacBook Pro 14" M4',
+    category: 'laptops',
     price: 1599.0,
     description:
       'Apple M4 with a 10-core CPU and a 10-core GPU, a 14.2" Liquid Retina XDR display, and up to 24 hours of battery — quietly built for serious work.',
@@ -83,6 +156,7 @@ const PRODUCTS = [
   {
     id: 'ipad-pro-m4',
     name: 'iPad Pro 11" M4',
+    category: 'tablets',
     price: 999.0,
     description:
       'The thinnest Apple product ever (5.3 mm) with a tandem-OLED display, M4 chip, and Apple Pencil Pro support — a portable creative studio.',
@@ -114,8 +188,37 @@ const PRODUCTS = [
     ],
   },
   {
+    id: 'samsung-galaxy-tab-s10',
+    name: 'Samsung Galaxy Tab S10+ 256 GB',
+    category: 'tablets',
+    price: 999.0,
+    description:
+      'Premium 12.4" Dynamic AMOLED 2X tablet with the MediaTek Dimensity 9300+, an included S Pen, an IP68 build, and Galaxy AI features for creators on the move.',
+    image: 'assets/images/products/samsung-galaxy-tab-s10/graphite.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'graphite',
+        name: 'Moonstone Graphite',
+        hex: '#2c2c2e',
+        image: 'assets/images/products/samsung-galaxy-tab-s10/graphite.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Display', value: '12.4" Dynamic AMOLED 2X, 120 Hz, 2800×1752' },
+      { label: 'Chip', value: 'MediaTek Dimensity 9300+ (4 nm)' },
+      { label: 'Memory', value: '12 GB RAM' },
+      { label: 'Storage', value: '256 GB + microSD up to 1.5 TB' },
+      { label: 'Camera', value: '13 MP main + 8 MP UW rear, 12 MP UW front' },
+      { label: 'S Pen', value: 'Bundled S Pen, no battery, 2.8 ms latency' },
+      { label: 'Battery', value: '10 090 mAh, 45 W super-fast charging' },
+      { label: 'Build', value: 'IP68 dust and water resistant aluminium body' },
+    ],
+  },
+  {
     id: 'apple-watch-ultra-2',
     name: 'Apple Watch Ultra 2',
+    category: 'watches',
     price: 799.0,
     description:
       '49 mm aerospace-grade titanium watch built for the outdoors, with a 3000-nit display, dual-frequency GPS, and 36-hour battery life.',
@@ -149,6 +252,7 @@ const PRODUCTS = [
   {
     id: 'airpods-pro-2',
     name: 'AirPods Pro 2 (USB-C)',
+    category: 'earbuds',
     price: 249.0,
     description:
       'Active Noise Cancellation, Adaptive Audio, Personalized Spatial Audio, and a MagSafe USB-C charging case with a built-in speaker.',
@@ -175,6 +279,7 @@ const PRODUCTS = [
   {
     id: 'sony-wh-1000xm5',
     name: 'Sony WH-1000XM5',
+    category: 'headphones',
     price: 399.0,
     description:
       'Industry-leading wireless noise cancellation, eight microphones for crystal-clear voice calls, 30-hour battery, and ultra-soft synthetic leather earpads.',
@@ -199,8 +304,36 @@ const PRODUCTS = [
     ],
   },
   {
+    id: 'bose-qc-ultra',
+    name: 'Bose QuietComfort Ultra',
+    category: 'headphones',
+    price: 429.0,
+    description:
+      'Bose immersive audio with Personalized Sound, world-class noise cancellation, plush memory-foam earcups, and aptX Adaptive lossless audio.',
+    image: 'assets/images/products/bose-qc-ultra/blue.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'blue',
+        name: 'Midnight Blue',
+        hex: '#3a4d6b',
+        image: 'assets/images/products/bose-qc-ultra/blue.jpg',
+      },
+    ],
+    specs: [
+      { label: 'ANC', value: 'CustomTune adaptive noise cancellation' },
+      { label: 'Immersive Audio', value: 'Bose Immersive Audio (Still / Motion)' },
+      { label: 'Battery', value: 'Up to 24 h (18 h with Immersive Audio)' },
+      { label: 'Codecs', value: 'aptX Adaptive lossless, SBC, AAC' },
+      { label: 'Mic', value: 'Beamforming microphone array for calls' },
+      { label: 'Multipoint', value: 'Yes (two devices simultaneously)' },
+      { label: 'Weight', value: '254 g' },
+    ],
+  },
+  {
     id: 'sony-a7-iv',
     name: 'Sony α7 IV (body)',
+    category: 'cameras',
     price: 2499.0,
     description:
       '33 MP full-frame Exmor R sensor, 4K 60p 10-bit video, real-time eye AF for humans, animals and birds, and a fully articulating touchscreen.',
@@ -226,8 +359,37 @@ const PRODUCTS = [
     ],
   },
   {
+    id: 'fujifilm-xt5',
+    name: 'Fujifilm X-T5 (body)',
+    category: 'cameras',
+    price: 1699.0,
+    description:
+      'Classic-styled 40 MP APS-C mirrorless with 5-axis IBIS, 6.2K 30p ProRes-ready video, twin SD UHS-II slots, and Fujifilm\'s legendary Film Simulations.',
+    image: 'assets/images/products/fujifilm-xt5/black.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'black',
+        name: 'Black',
+        hex: '#1a1a1a',
+        image: 'assets/images/products/fujifilm-xt5/black.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Sensor', value: '40.2 MP APS-C X-Trans CMOS 5 HR' },
+      { label: 'Processor', value: 'X-Processor 5' },
+      { label: 'Video', value: '6.2K 30p, 4K 60p, F-Log2 internal' },
+      { label: 'AF', value: 'AI subject detection (animals, vehicles, planes, trains)' },
+      { label: 'Burst', value: 'Up to 15 fps mech / 20 fps electronic' },
+      { label: 'Stabilisation', value: '5-axis IBIS, up to 7 stops' },
+      { label: 'Viewfinder', value: '0.5" 3.69 M-dot OLED EVF, 100 fps' },
+      { label: 'Storage', value: 'Dual SD UHS-II slots' },
+    ],
+  },
+  {
     id: 'jbl-flip-6',
     name: 'JBL Flip 6',
+    category: 'speakers',
     price: 129.0,
     description:
       'Bold sound and powerful bass in a compact, IP67 dust- and waterproof speaker. 12 hours of battery and PartyBoost for stereo or party-mode pairing.',
@@ -255,6 +417,87 @@ const PRODUCTS = [
       { label: 'Durability', value: 'IP67 dust- and waterproof' },
       { label: 'Multi-speaker', value: 'JBL PartyBoost (stereo or party mode)' },
       { label: 'Weight', value: '550 g' },
+    ],
+  },
+  {
+    id: 'sonos-era-100',
+    name: 'Sonos Era 100',
+    category: 'speakers',
+    price: 249.0,
+    description:
+      'Compact smart speaker with stereo sound, room-correction Trueplay tuning, Bluetooth + Wi-Fi 6, and built-in Amazon Alexa or Sonos Voice Control.',
+    image: 'assets/images/products/sonos-era-100/white.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'white',
+        name: 'White',
+        hex: '#f1efeb',
+        image: 'assets/images/products/sonos-era-100/white.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Drivers', value: 'Two angled tweeters + one mid-woofer (stereo)' },
+      { label: 'Wireless', value: 'Wi-Fi 6, Bluetooth 5.0, AirPlay 2' },
+      { label: 'Voice', value: 'Amazon Alexa, Sonos Voice Control' },
+      { label: 'Tuning', value: 'Trueplay (iOS + Android quick tuning)' },
+      { label: 'Inputs', value: 'USB-C line-in (with optional adapter)' },
+      { label: 'Sustainability', value: '40% post-consumer recycled plastic' },
+      { label: 'Weight', value: '2.02 kg' },
+    ],
+  },
+  {
+    id: 'logitech-mx-master-3s',
+    name: 'Logitech MX Master 3S',
+    category: 'mice',
+    price: 99.0,
+    description:
+      'Workhorse productivity mouse with an 8K DPI sensor, ultra-quiet clicks, MagSpeed electromagnetic scrolling, and Logi Flow across up to three computers.',
+    image: 'assets/images/products/logitech-mx-master-3s/graphite.jpg',
+    badge: 'Bestseller',
+    colors: [
+      {
+        id: 'graphite',
+        name: 'Graphite',
+        hex: '#2a2a2a',
+        image: 'assets/images/products/logitech-mx-master-3s/graphite.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Sensor', value: '8000 DPI Darkfield (works on glass)' },
+      { label: 'Buttons', value: '7 customisable, ultra-quiet clicks (–90% sound)' },
+      { label: 'Scroll', value: 'MagSpeed electromagnetic, 1000 lines/s' },
+      { label: 'Connectivity', value: 'Bluetooth LE + Logi Bolt USB receiver' },
+      { label: 'Multi-device', value: 'Up to 3 devices, Logi Flow cross-computer' },
+      { label: 'Battery', value: 'Up to 70 days, USB-C fast charge' },
+      { label: 'Weight', value: '141 g' },
+    ],
+  },
+  {
+    id: 'razer-deathadder-v3',
+    name: 'Razer DeathAdder V3 Pro',
+    category: 'mice',
+    price: 149.0,
+    description:
+      'Ultra-light 63 g esports mouse with the Focus Pro 30K optical sensor, 90-hour battery, optical mouse switches Gen-3, and HyperPolling up to 4000 Hz.',
+    image: 'assets/images/products/razer-deathadder-v3/black.jpg',
+    badge: '',
+    colors: [
+      {
+        id: 'black',
+        name: 'Black',
+        hex: '#0d0d0d',
+        image: 'assets/images/products/razer-deathadder-v3/black.jpg',
+      },
+    ],
+    specs: [
+      { label: 'Sensor', value: 'Focus Pro 30 000 DPI optical' },
+      { label: 'Switches', value: 'Razer optical mouse switches Gen-3, 90 M clicks' },
+      { label: 'Polling', value: 'Up to 4000 Hz with HyperPolling Wireless Dongle' },
+      { label: 'Battery', value: 'Up to 90 hours, USB-C charging' },
+      { label: 'Weight', value: '63 g' },
+      { label: 'Connectivity', value: 'HyperSpeed Wireless 2.4 GHz, USB-C wired' },
+      { label: 'Buttons', value: '5 programmable' },
     ],
   },
 ];

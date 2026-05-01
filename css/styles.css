@@ -891,7 +891,7 @@ button {
   }
 
   .cart-layout {
-    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-columns: minmax(0, 1fr) 400px;
     gap: 2rem;
   }
 
@@ -1210,6 +1210,491 @@ button {
 
   .product-price-lg {
     font-size: 1.85rem;
+  }
+}
+
+/* =========================================================
+   Catalog layout — category sidebar + product grid
+========================================================= */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.catalog-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.sidebar-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 0.6rem;
+}
+
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.category-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition), border-color var(--transition),
+    color var(--transition);
+}
+
+.category-link:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.category-link.is-active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.category-count {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.category-link.is-active .category-count {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.catalog-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.catalog-result-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.catalog-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+/* =========================================================
+   Cart side column — wraps summary + payment + actions
+========================================================= */
+.cart-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-side-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+/* =========================================================
+   Payment section
+========================================================= */
+.cart-payment {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-payment.is-disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.payment-method {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.4rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition),
+    transform var(--transition);
+}
+
+.payment-method:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.payment-method.is-active {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 2px rgba(35, 89, 228, 0.12);
+}
+
+.payment-method-glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 26px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.payment-method-glyph svg {
+  width: 26px;
+  height: 18px;
+  display: block;
+}
+
+.payment-method-glyph--kaspi {
+  background: #f14635;
+  color: #fff;
+  border-color: #d83020;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  padding: 0 4px;
+}
+
+.payment-method-glyph--apple {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.payment-method-glyph--apple svg {
+  width: 14px;
+  height: 18px;
+}
+
+.payment-method-label {
+  font-weight: 500;
+}
+
+.payment-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Card preview */
+.payment-card-preview {
+  background: linear-gradient(135deg, #1f2435 0%, #303a55 50%, #5a6d99 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1rem 1.1rem 0.95rem;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.payment-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payment-card-chip {
+  width: 32px;
+  height: 22px;
+  background: linear-gradient(135deg, #d8c98e, #b9a25c);
+  border-radius: 4px;
+  position: relative;
+}
+
+.payment-card-chip::before,
+.payment-card-chip::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.payment-card-chip::before {
+  top: 7px;
+}
+
+.payment-card-chip::after {
+  bottom: 7px;
+}
+
+.payment-card-network {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+.payment-card-number {
+  font-family: 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+.payment-card-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.payment-card-meta-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.payment-card-meta-value {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+/* Forms */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.payment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.payment-field-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.payment-field input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.95rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.payment-field input::placeholder {
+  color: var(--text-soft);
+}
+
+.payment-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(35, 89, 228, 0.15);
+}
+
+.payment-field-error {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.payment-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Kaspi panel */
+.kaspi-banner {
+  background: linear-gradient(135deg, #f14635 0%, #d83020 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.kaspi-logo {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.kaspi-text {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Pay button variants and layout */
+.button-lg {
+  padding: 0.85rem 1.1rem;
+  font-size: 1rem;
+}
+
+.button-kaspi {
+  background: #f14635;
+  color: #fff;
+  border-color: #f14635;
+}
+
+.button-kaspi:hover {
+  background: #d83020;
+  border-color: #d83020;
+}
+
+.button-black {
+  background: #0d0d0d;
+  color: #fff;
+  border-color: #0d0d0d;
+}
+
+.button-black:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.pay-btn-amount {
+  font-weight: 700;
+}
+
+.pay-btn-amount::before {
+  content: '— ';
+  opacity: 0.6;
+}
+
+.apple-pay-glyph {
+  width: 14px;
+  height: 18px;
+  display: inline-block;
+}
+
+/* =========================================================
+   Catalog + cart layout — responsive overrides
+========================================================= */
+@media (min-width: 640px) {
+  .payment-methods {
+    gap: 0.6rem;
+  }
+
+  .payment-method {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .catalog-sidebar {
+    padding: 1.1rem 1rem;
+    position: sticky;
+    top: 1rem;
+  }
+
+  .category-list {
+    flex-direction: column;
+    gap: 0.25rem;
+    overflow: visible;
+  }
+
+  .category-link {
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    background: transparent;
+    border-color: transparent;
+    border-radius: 10px;
+  }
+
+  .category-link:hover {
+    background: var(--surface-2);
+    border-color: var(--surface-2);
+  }
+
+  .category-link.is-active {
+    background: var(--accent);
+    border-color: var(--accent);
   }
 }
 
