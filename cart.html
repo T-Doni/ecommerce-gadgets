@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart — NovaTech</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html" aria-label="NovaTech home">
+          <span class="logo-mark" aria-hidden="true">◆</span>
+          <span class="logo-text">NovaTech</span>
+        </a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html" class="nav-link">Catalogue</a>
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </nav>
+        <a href="cart.html" class="cart-button active" aria-label="Open cart">
+          <svg
+            class="cart-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6h15l-1.5 9h-12z" />
+            <circle cx="9" cy="20" r="1.4" />
+            <circle cx="18" cy="20" r="1.4" />
+            <path d="M3 3h2l1 3" />
+          </svg>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="cart-page">
+      <div class="container">
+        <div class="page-head">
+          <h1 class="page-title">Your cart</h1>
+          <p class="page-sub" id="cart-summary-line">Loading…</p>
+        </div>
+
+        <div class="cart-layout" id="cart-layout">
+          <section class="cart-items" id="cart-items" aria-label="Cart items">
+            <!-- Filled by cart.js -->
+          </section>
+
+          <aside class="cart-side" aria-label="Order summary and payment">
+            <section class="cart-summary">
+              <h2 class="summary-title">Order summary</h2>
+              <dl class="summary-list">
+                <div class="summary-row">
+                  <dt>Items</dt>
+                  <dd id="summary-items">0</dd>
+                </div>
+                <div class="summary-row">
+                  <dt>Subtotal</dt>
+                  <dd id="summary-subtotal">$0.00</dd>
+                </div>
+                <div class="summary-row">
+                  <dt>Shipping</dt>
+                  <dd id="summary-shipping">$0.00</dd>
+                </div>
+                <div class="summary-row summary-total">
+                  <dt>Total</dt>
+                  <dd id="summary-total">$0.00</dd>
+                </div>
+              </dl>
+              <p class="summary-note" id="shipping-note">
+                Add $99 to your order for free shipping.
+              </p>
+            </section>
+
+            <section class="cart-payment" id="cart-payment" aria-label="Payment">
+              <h2 class="summary-title">Payment method</h2>
+              <div
+                class="payment-methods"
+                role="tablist"
+                aria-label="Payment methods"
+              >
+                <button
+                  type="button"
+                  class="payment-method is-active"
+                  data-method="card"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="payment-panel-card"
+                  id="payment-tab-card"
+                >
+                  <span class="payment-method-glyph payment-method-glyph--card" aria-hidden="true">
+                    <svg viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="0.75" y="0.75" width="22.5" height="14.5" rx="2" />
+                      <path d="M0.75 5h22.5" />
+                      <path d="M4 11h4" />
+                    </svg>
+                  </span>
+                  <span class="payment-method-label">Card</span>
+                </button>
+                <button
+                  type="button"
+                  class="payment-method"
+                  data-method="kaspi"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="payment-panel-kaspi"
+                  id="payment-tab-kaspi"
+                >
+                  <span class="payment-method-glyph payment-method-glyph--kaspi" aria-hidden="true">Kaspi</span>
+                  <span class="payment-method-label">Kaspi.kz</span>
+                </button>
+                <button
+                  type="button"
+                  class="payment-method"
+                  data-method="apple"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="payment-panel-apple"
+                  id="payment-tab-apple"
+                >
+                  <span class="payment-method-glyph payment-method-glyph--apple" aria-hidden="true">
+                    <svg viewBox="0 0 18 22" fill="currentColor" aria-hidden="true">
+                      <path d="M13.4 11.4c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9-.8 0-1.9-.9-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.3 1.2 9.7.8 1.2 1.7 2.5 3 2.4 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.9zM10.9 4.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.8 1.5-.6.7-1.2 1.9-1 3 1 .1 2.1-.6 2.8-1.4z"/>
+                    </svg>
+                  </span>
+                  <span class="payment-method-label">Apple Pay</span>
+                </button>
+              </div>
+
+              <div
+                class="payment-panel"
+                data-panel="card"
+                id="payment-panel-card"
+                role="tabpanel"
+                aria-labelledby="payment-tab-card"
+              >
+                <div class="payment-card-preview" aria-hidden="true">
+                  <div class="payment-card-top">
+                    <span class="payment-card-chip"></span>
+                    <span class="payment-card-network">VISA</span>
+                  </div>
+                  <div class="payment-card-number" id="card-pre-number">
+                    •••• •••• •••• 1234
+                  </div>
+                  <div class="payment-card-meta">
+                    <div>
+                      <span class="payment-card-meta-label">Cardholder</span>
+                      <span class="payment-card-meta-value" id="card-pre-name">Your Name</span>
+                    </div>
+                    <div>
+                      <span class="payment-card-meta-label">Expires</span>
+                      <span class="payment-card-meta-value" id="card-pre-exp">MM/YY</span>
+                    </div>
+                  </div>
+                </div>
+                <form class="payment-form" id="card-form" novalidate>
+                  <label class="payment-field">
+                    <span class="payment-field-label">Name on card</span>
+                    <input
+                      type="text"
+                      name="name"
+                      autocomplete="cc-name"
+                      required
+                      maxlength="40"
+                      placeholder="John Doe"
+                    />
+                  </label>
+                  <label class="payment-field">
+                    <span class="payment-field-label">Card number</span>
+                    <input
+                      type="text"
+                      name="number"
+                      inputmode="numeric"
+                      autocomplete="cc-number"
+                      required
+                      maxlength="19"
+                      placeholder="1234 5678 9012 3456"
+                    />
+                  </label>
+                  <div class="payment-grid">
+                    <label class="payment-field">
+                      <span class="payment-field-label">Month</span>
+                      <input
+                        type="text"
+                        name="month"
+                        inputmode="numeric"
+                        autocomplete="cc-exp-month"
+                        required
+                        maxlength="2"
+                        placeholder="MM"
+                      />
+                    </label>
+                    <label class="payment-field">
+                      <span class="payment-field-label">Year</span>
+                      <input
+                        type="text"
+                        name="year"
+                        inputmode="numeric"
+                        autocomplete="cc-exp-year"
+                        required
+                        maxlength="4"
+                        placeholder="YYYY"
+                      />
+                    </label>
+                    <label class="payment-field">
+                      <span class="payment-field-label">CVV</span>
+                      <input
+                        type="text"
+                        name="cvv"
+                        inputmode="numeric"
+                        autocomplete="cc-csc"
+                        required
+                        maxlength="4"
+                        placeholder="123"
+                      />
+                    </label>
+                  </div>
+                  <button
+                    type="submit"
+                    class="button button-primary button-block button-lg pay-btn"
+                  >
+                    <span class="pay-btn-label">Pay</span>
+                    <span class="pay-btn-amount" data-pay-amount>$0.00</span>
+                  </button>
+                </form>
+              </div>
+
+              <div
+                class="payment-panel"
+                data-panel="kaspi"
+                id="payment-panel-kaspi"
+                role="tabpanel"
+                aria-labelledby="payment-tab-kaspi"
+                hidden
+              >
+                <div class="kaspi-banner">
+                  <span class="kaspi-logo" aria-hidden="true">Kaspi.kz</span>
+                  <p class="kaspi-text">
+                    We'll send a payment request to your Kaspi.kz app.
+                    Confirm it on your phone to complete the order.
+                  </p>
+                </div>
+                <form class="payment-form" id="kaspi-form" novalidate>
+                  <label class="payment-field">
+                    <span class="payment-field-label">Kaspi mobile number</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      autocomplete="tel"
+                      required
+                      maxlength="18"
+                      placeholder="+7 (___) ___-__-__"
+                    />
+                  </label>
+                  <button
+                    type="submit"
+                    class="button button-kaspi button-block button-lg pay-btn"
+                  >
+                    <span class="pay-btn-label">Pay with Kaspi</span>
+                    <span class="pay-btn-amount" data-pay-amount>$0.00</span>
+                  </button>
+                </form>
+              </div>
+
+              <div
+                class="payment-panel"
+                data-panel="apple"
+                id="payment-panel-apple"
+                role="tabpanel"
+                aria-labelledby="payment-tab-apple"
+                hidden
+              >
+                <p class="payment-text">
+                  Pay quickly using the card stored in your Apple Wallet.
+                  Confirm with Touch ID or Face ID on your device.
+                </p>
+                <button
+                  type="button"
+                  class="button button-black button-block button-lg pay-btn"
+                  id="apple-pay-btn"
+                >
+                  <svg class="apple-pay-glyph" viewBox="0 0 18 22" fill="currentColor" aria-hidden="true">
+                    <path d="M13.4 11.4c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.6.9-.8 0-1.9-.9-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.3 1.2 9.7.8 1.2 1.7 2.5 3 2.4 1.2-.1 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.6-1-2.6-3.9zM10.9 4.1c.7-.8 1.1-1.9 1-3.1-1 0-2.2.7-2.8 1.5-.6.7-1.2 1.9-1 3 1 .1 2.1-.6 2.8-1.4z"/>
+                  </svg>
+                  <span class="pay-btn-label">Pay</span>
+                  <span class="pay-btn-amount" data-pay-amount>$0.00</span>
+                </button>
+              </div>
+            </section>
+
+            <div class="cart-side-actions">
+              <button class="button button-ghost button-block" id="clear-btn" type="button">
+                Clear cart
+              </button>
+              <a class="button button-link" href="index.html#catalogue">
+                ← Continue shopping
+              </a>
+            </div>
+          </aside>
+        </div>
+
+        <section class="cart-empty" id="cart-empty" hidden>
+          <div class="empty-art" aria-hidden="true">⊘</div>
+          <h2>Your cart is empty</h2>
+          <p>Browse the catalogue and add a gadget or two to get started.</p>
+          <a class="button button-primary" href="index.html#catalogue">Go to catalogue</a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <small>© <span id="year"></span> NovaTech. All rights reserved.</small>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart-store.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/payment.js"></script>
+  </body>
+</html>

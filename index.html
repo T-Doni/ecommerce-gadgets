@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech — Gadgets Shop</title>
+    <meta
+      name="description"
+      content="NovaTech: a curated catalogue of premium gadgets — headphones, smartwatches, laptops and more."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html" aria-label="NovaTech home">
+          <span class="logo-mark" aria-hidden="true">◆</span>
+          <span class="logo-text">NovaTech</span>
+        </a>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html" class="nav-link active">Catalogue</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <a href="cart.html" class="cart-button" aria-label="Open cart">
+          <svg
+            class="cart-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 6h15l-1.5 9h-12z" />
+            <circle cx="9" cy="20" r="1.4" />
+            <circle cx="18" cy="20" r="1.4" />
+            <path d="M3 3h2l1 3" />
+          </svg>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow">Premium gadgets, honest prices</p>
+          <h1 class="hero-title">
+            Tools that quietly upgrade <span class="accent">your day</span>.
+          </h1>
+          <p class="hero-text">
+            Hand-picked headphones, watches, laptops and cameras — each one
+            tested, reviewed, and ready to ship.
+          </p>
+          <div class="hero-actions">
+            <a href="#catalogue" class="button button-primary">Shop catalogue</a>
+            <a href="cart.html" class="button button-ghost">View cart</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalogue" class="catalogue">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Catalogue</h2>
+            <p class="section-sub">
+              Hand-picked gadgets across phones, laptops, cameras and more.
+            </p>
+          </div>
+          <div class="catalog-layout">
+            <aside class="catalog-sidebar" aria-label="Filter by category">
+              <h3 class="sidebar-title">Categories</h3>
+              <ul class="category-list" id="category-list" role="list">
+                <!-- Filled by catalog.js -->
+              </ul>
+            </aside>
+            <div class="catalog-main">
+              <div class="catalog-toolbar">
+                <span class="catalog-result-count" id="catalog-result-count" aria-live="polite"></span>
+              </div>
+              <div class="product-grid" id="product-grid">
+                <!-- Filled by catalog.js -->
+              </div>
+              <p class="catalog-empty" id="catalog-empty" hidden>
+                No products in this category yet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="info-band">
+        <div class="container info-grid">
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 12a9 9 0 1 0 3-6.7" />
+                <path d="M3 4v5h5" />
+              </svg>
+            </div>
+            <h3>30-day returns</h3>
+            <p>Change your mind? Send it back, no questions asked.</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 7h11v9H3z" />
+                <path d="M14 10h4l3 3v3h-7" />
+                <circle cx="7.5" cy="17.5" r="1.8" />
+                <circle cx="17.5" cy="17.5" r="1.8" />
+              </svg>
+            </div>
+            <h3>Fast delivery</h3>
+            <p>Free shipping on orders over $99, worldwide.</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3l8 3v6c0 4.5-3.4 8.4-8 9-4.6-.6-8-4.5-8-9V6l8-3z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
+            <h3>2-year warranty</h3>
+            <p>Every gadget is covered by our extended warranty.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <a class="logo" href="index.html">
+            <span class="logo-mark" aria-hidden="true">◆</span>
+            <span class="logo-text">NovaTech</span>
+          </a>
+          <p class="footer-text">
+            Group project for Web Development I. Built with vanilla HTML, CSS,
+            and JavaScript.
+          </p>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <h4>Shop</h4>
+            <a href="index.html#catalogue">Catalogue</a>
+            <a href="cart.html">Cart</a>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <a href="mailto:hello@novatech.example">hello@novatech.example</a>
+            <a href="tel:+10000000000">+1 000 000 0000</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <small>© <span id="year"></span> NovaTech. All rights reserved.</small>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart-store.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/catalog.js"></script>
+  </body>
+</html>
