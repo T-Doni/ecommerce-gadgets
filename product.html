@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product — NovaTech</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">◆</span>
+          <span class="logo-text">NovaTech</span>
+        </a>
+        <nav class="primary-nav">
+          <a href="index.html" class="nav-link">Catalogue</a>
+          <a href="cart.html" class="nav-link">Cart</a>
+        </nav>
+        <a href="cart.html" class="cart-button" aria-label="Open cart">
+          <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6h15l-1.5 9h-12z" />
+            <circle cx="9" cy="20" r="1.4" />
+            <circle cx="18" cy="20" r="1.4" />
+            <path d="M3 3h2l1 3" />
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="product-detail">
+        <div class="container">
+          <a class="back-link" href="index.html">← Back to catalogue</a>
+
+          <div id="product-not-found" class="empty-state" hidden>
+            <h2>Product not found</h2>
+            <a class="button button-primary" href="index.html">Back to catalogue</a>
+          </div>
+
+          <div id="product-layout" class="product-layout" hidden>
+            <div class="product-gallery">
+              <img id="product-image" class="product-gallery-image" src="" alt="" />
+            </div>
+            <div class="product-summary">
+              <h1 class="product-title" id="product-name"></h1>
+              <p class="product-tagline" id="product-desc"></p>
+              <div class="product-price-lg" id="product-price"></div>
+
+              <div class="product-color-section">
+                <div class="product-color-head">
+                  <span class="product-color-label">Color:</span>
+                  <span class="product-color-name" id="selected-color-name"></span>
+                </div>
+                <div class="product-swatches" id="product-swatches"></div>
+              </div>
+
+              <div class="product-buy-row">
+                <div class="qty-control" id="detail-qty" data-qty="1">
+                  <button type="button" class="qty-btn" data-action="dec">−</button>
+                  <span class="qty-value">1</span>
+                  <button type="button" class="qty-btn" data-action="inc">+</button>
+                </div>
+                <button type="button" class="button button-primary" id="add-to-cart">Add to cart</button>
+              </div>
+
+              <h2 class="specs-heading">Specifications</h2>
+              <dl class="spec-list" id="product-specs"></dl>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> NovaTech — Group project for Web Development I.</small>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart-store.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/product.js"></script>
+  </body>
+</html>

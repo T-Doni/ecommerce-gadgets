@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech — Gadgets Shop</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="index.html">
+          <span class="logo-mark">◆</span>
+          <span class="logo-text">NovaTech</span>
+        </a>
+        <nav class="primary-nav">
+          <a href="index.html" class="nav-link active">Catalogue</a>
+          <a href="cart.html" class="nav-link">Cart</a>
+        </nav>
+        <a href="cart.html" class="cart-button" aria-label="Open cart">
+          <svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6h15l-1.5 9h-12z" />
+            <circle cx="9" cy="20" r="1.4" />
+            <circle cx="18" cy="20" r="1.4" />
+            <path d="M3 3h2l1 3" />
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <h1 class="hero-title">Premium gadgets, <span class="accent">honest prices</span>.</h1>
+          <p class="hero-text">
+            Hand-picked headphones, watches, laptops and cameras — each one tested and ready to ship.
+          </p>
+          <a href="#catalogue" class="button button-primary">Shop catalogue</a>
+        </div>
+      </section>
+
+      <section id="catalogue" class="catalogue">
+        <div class="container">
+          <h2 class="section-title">Catalogue</h2>
+          <div class="product-grid" id="product-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> NovaTech — Group project for Web Development I.</small>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart-store.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/catalog.js"></script>
+  </body>
+</html>
