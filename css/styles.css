@@ -1,4 +1,27 @@
-/* ===== Variables & reset ===== */
+/* ==========================================================================
+   styles.css — все стили проекта в одном файле.
+   --------------------------------------------------------------------------
+   Структура (по секциям):
+     1. Переменные и reset       — цвета, скругления, базовые правила
+     2. Кнопки                   — .button, .button-primary, .button-ghost
+     3. Шапка                    — .site-header, .nav-link, .cart-button
+     4. Hero-баннер              — .hero на главной
+     5. Секции                   — .section-title, .page-title
+     6. Сетка товаров            — .product-grid и .product-card
+     7. Страница корзины         — .cart-layout, .cart-row, .cart-summary
+     8. Страница товара          — .product-detail, .swatch, .spec-list
+     9. Футер
+     10. Адаптив                 — @media (min-width: 640px) / (min-width: 1024px)
+
+   Адаптивность (mobile-first):
+     - По умолчанию (телефоны)   — 2 колонки в каталоге, всё компактнее
+     - ≥ 640px (планшеты)        — 3 колонки
+     - ≥ 1024px (десктоп)        — 4 колонки + правая колонка с summary
+   ========================================================================== */
+
+/* ===== 1. Variables & reset =====
+   :root — это <html>. Переменные --foo используем дальше через var(--foo).
+   Если в одном месте поменять цвет --accent — изменится по всему сайту. */
 :root {
   --bg: #f7f7f8;
   --surface: #ffffff;
@@ -15,6 +38,12 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* Атрибут hidden должен скрывать элемент — даже если ниже стоит display: grid/flex.
+   Без этой строки .cart-layout и .product-layout не прячутся при hidden=true. */
+[hidden] {
+  display: none !important;
 }
 
 html {
@@ -52,7 +81,10 @@ button {
   padding: 0 1rem;
 }
 
-/* ===== Buttons ===== */
+/* ===== 2. Кнопки =====
+   .button-primary — синяя залитая (главные действия: Add to cart, Checkout).
+   .button-ghost   — белая с рамкой (вторичные: View details, Clear cart).
+   .button-block   — растягивается на всю ширину родителя. */
 .button {
   display: inline-flex;
   align-items: center;
@@ -101,7 +133,10 @@ button {
   text-decoration: underline;
 }
 
-/* ===== Header ===== */
+/* ===== 3. Шапка =====
+   .site-header — белая полоска сверху на всех страницах.
+   .cart-count[data-empty='true'] — бейдж становится прозрачным когда 0
+   (это data-атрибут переключает js/header.js). */
 .site-header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -169,7 +204,7 @@ button {
   color: var(--muted);
 }
 
-/* ===== Hero ===== */
+/* ===== 4. Hero-баннер ===== (только на главной index.html) */
 .hero {
   padding: 3rem 0 2rem;
   background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
@@ -192,7 +227,7 @@ button {
   margin: 0 auto 1.4rem;
 }
 
-/* ===== Section ===== */
+/* ===== 5. Секции (заголовки) ===== */
 .catalogue {
   padding: 2rem 0 3rem;
 }
@@ -203,7 +238,9 @@ button {
   margin: 0 0 1.2rem;
 }
 
-/* ===== Product grid ===== */
+/* ===== 6. Сетка товаров (.product-grid + .product-card) =====
+   grid-template-columns: repeat(2, minmax(0, 1fr)) — 2 колонки одинаковой ширины.
+   minmax(0, 1fr) защищает от переполнения когда содержимое шире колонки. */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -349,7 +386,10 @@ button {
   outline-offset: 2px;
 }
 
-/* ===== Cart page ===== */
+/* ===== 7. Страница корзины =====
+   .cart-layout — мобайл: одна колонка (список + summary друг под другом).
+                  десктоп: две колонки (список слева, summary справа).
+   .cart-row    — одна строка с товаром (фото / инфо / qty / цена). */
 .cart-page {
   padding: 2rem 0 3rem;
 }
@@ -489,7 +529,11 @@ button {
   margin: 0 0 1.2rem;
 }
 
-/* ===== Product detail page ===== */
+/* ===== 8. Страница товара (product.html) =====
+   .product-layout — мобайл: фото сверху, инфо снизу.
+                     десктоп: фото слева, инфо справа.
+   .swatch         — кружок цвета. Цвет берётся из CSS переменной --swatch-color
+                     (её устанавливает JS: btn.style.setProperty('--swatch-color', hex)). */
 .product-detail {
   padding: 2rem 0 3rem;
 }
@@ -593,7 +637,7 @@ button {
   padding: 3rem 1rem;
 }
 
-/* ===== Footer ===== */
+/* ===== 9. Футер ===== */
 .site-footer {
   border-top: 1px solid var(--border);
   background: var(--surface);
@@ -603,7 +647,8 @@ button {
   font-size: 0.85rem;
 }
 
-/* ===== Tablet (≥640px) ===== */
+/* ===== 10a. Планшет (ширина ≥ 640px) =====
+   Каталог переключается на 3 колонки, корзина становится двухколоночной. */
 @media (min-width: 640px) {
   .container {
     padding: 0 1.5rem;
@@ -643,7 +688,8 @@ button {
   }
 }
 
-/* ===== Desktop (≥1024px) ===== */
+/* ===== 10b. Десктоп (ширина ≥ 1024px) =====
+   Каталог 4 колонки. Hero и страница товара становятся просторнее. */
 @media (min-width: 1024px) {
   .hero {
     padding: 5rem 0 3rem;

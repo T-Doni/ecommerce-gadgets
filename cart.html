@@ -1,3 +1,8 @@
+<!--
+  cart.html — страница корзины.
+  Список строк (#cart-items) и сводку (#summary-*) рисует js/cart.js.
+  Блок #cart-empty показывается когда корзина пустая.
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +12,7 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <!-- ========== ШАПКА ========== -->
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="index.html">
@@ -33,9 +39,12 @@
       <div class="container">
         <h1 class="page-title">Your cart</h1>
 
+        <!-- Основной layout: слева список, справа сводка. -->
         <div class="cart-layout" id="cart-layout">
+          <!-- #cart-items пустой в HTML — строки в него вставит cart.js -->
           <section class="cart-items" id="cart-items"></section>
 
+          <!-- Правый блок: количество, subtotal, total + кнопки -->
           <aside class="cart-summary">
             <h2 class="summary-title">Order summary</h2>
             <dl class="summary-list">
@@ -53,10 +62,11 @@
               </div>
             </dl>
             <button type="button" id="clear-btn" class="button button-ghost button-block">Clear cart</button>
-            <button type="button" class="button button-primary button-block">Checkout</button>
+            <button type="button" id="checkout-btn" class="button button-primary button-block">Checkout</button>
           </aside>
         </div>
 
+        <!-- Заглушка для пустой корзины. cart.js переключает hidden. -->
         <div class="cart-empty" id="cart-empty" hidden>
           <h2>Your cart is empty</h2>
           <p>Browse the catalogue and add a few gadgets to get started.</p>
@@ -71,6 +81,7 @@
       </div>
     </footer>
 
+    <!-- В конце cart.js (вместо catalog.js / product.js) -->
     <script src="js/data.js"></script>
     <script src="js/cart-store.js"></script>
     <script src="js/header.js"></script>
